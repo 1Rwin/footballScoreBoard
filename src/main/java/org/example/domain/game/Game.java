@@ -1,5 +1,6 @@
 package org.example.domain.game;
 
+import org.example.domain.game.exception.GameInvalidStateException;
 import org.example.domain.team.Team;
 
 import java.util.Objects;
@@ -15,6 +16,19 @@ public class Game {
 
     public static Game startNew(Team homeTeam, Team awayTeam) {
         return new Game(homeTeam, awayTeam);
+    }
+
+    public void update(int newHomeTeamScore, int newAwayTeamScore, boolean newIsFinished) {
+        validationNotInProgress();
+        this.awayTeamScore = newAwayTeamScore;
+        this.homeTeamScore = newHomeTeamScore;
+        this.isFinished = newIsFinished;
+    }
+
+    private void validationNotInProgress() {
+        if(isFinished){
+            throw new GameInvalidStateException("Game can't be updated because it is already finished.");
+        }
     }
 
     private Game(Team homeTeam, Team awayTeam) {
