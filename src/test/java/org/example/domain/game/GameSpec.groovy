@@ -1,6 +1,5 @@
 package org.example.domain.game
 
-import org.example.domain.game.Game
 import org.example.domain.team.Team
 import spock.lang.Specification
 

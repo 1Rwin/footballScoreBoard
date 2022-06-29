@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Game {
-    UUID id;
+    public final UUID id;
     Team homeTeam;
     Team awayTeam;
     Integer homeTeamScore;
