@@ -24,6 +24,9 @@ public class Game {
         this.awayTeamScore = newAwayTeamScore;
         this.homeTeamScore = newHomeTeamScore;
         this.isFinished = newIsFinished;
+        if (isFinished) {
+            this.createGameResult();
+        }
     }
 
     public void createGameResult() {
@@ -43,6 +46,7 @@ public class Game {
     public void finish() {
         validationIsInProgress();
         this.isFinished = true;
+        this.createGameResult();
     }
 
     private void validationIsInProgress() {
@@ -58,6 +62,22 @@ public class Game {
         this.homeTeamScore = 0;
         this.awayTeamScore = 0;
         this.isFinished = false;
+    }
+
+    public String getHomeTeamName() {
+        return homeTeam.name;
+    }
+
+    public String getAwayTeamName() {
+        return awayTeam.name;
+    }
+
+    public String getGameResult() {
+        return gameResult;
+    }
+
+    public Boolean getIsGameFinished() {
+        return isFinished;
     }
 
     @Override

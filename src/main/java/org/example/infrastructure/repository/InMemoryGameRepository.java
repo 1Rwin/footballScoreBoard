@@ -1,4 +1,4 @@
-package org.example.infrastructure;
+package org.example.infrastructure.repository;
 
 import org.example.domain.game.Game;
 import org.example.repository.GameRepository;
@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class InMemoryGameRepository implements GameRepository {
 
-    private static final Map<UUID, Game> GAMES = new ConcurrentHashMap<>();
+    private static final Map<UUID, Game> GAMES = new LinkedHashMap<>();
 
     @Override
     public List<Game> findByGameId(UUID gameId) {
@@ -37,5 +37,10 @@ public class InMemoryGameRepository implements GameRepository {
     @Override
     public void saveAll(Collection<Game> games) {
         games.forEach(this::save);
+    }
+
+    @Override
+    public List<Game> findAll() {
+        return new ArrayList<>(GAMES.values());
     }
 }

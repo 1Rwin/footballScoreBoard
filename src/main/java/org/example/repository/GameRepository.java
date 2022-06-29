@@ -17,4 +17,6 @@ public interface GameRepository {
     void removeAll();
 
     void saveAll(Collection<Game> games);
+
+    List<Game> findAll();
 }
