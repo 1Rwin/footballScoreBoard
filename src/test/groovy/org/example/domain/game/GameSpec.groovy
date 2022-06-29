@@ -52,7 +52,7 @@ class GameSpec extends Specification {
 
         then:
         GameInvalidStateException ex = thrown(GameInvalidStateException)
-        ex.message == "Game can't be updated because it is already finished."
+        ex.message == "Game can't be updated - game is already finished."
     }
 
     def "should not finish game - game is already finished"() {
@@ -64,7 +64,7 @@ class GameSpec extends Specification {
 
         then:
         GameInvalidStateException ex = thrown(GameInvalidStateException)
-        ex.message == "Game can't be updated because it is already finished."
+        ex.message == "Game can't be updated - game is already finished."
     }
 
     def "should finish game"() {
@@ -77,6 +77,18 @@ class GameSpec extends Specification {
         then:
         noExceptionThrown()
         game.isFinished
+    }
+
+    def "should create result for specific game"() {
+        given:
+        Game game = createFinishedGame()
+
+        when:
+        game.createGameResult()
+
+        then:
+        game.gameResult == "France 0 - Poland 0"
+
     }
 
     private Game createNewGame() {

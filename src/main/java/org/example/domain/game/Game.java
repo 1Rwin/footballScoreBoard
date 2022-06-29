@@ -13,26 +13,41 @@ public class Game {
     Integer homeTeamScore;
     Integer awayTeamScore;
     Boolean isFinished;
+    String gameResult;
 
     public static Game startNew(Team homeTeam, Team awayTeam) {
         return new Game(homeTeam, awayTeam);
     }
 
     public void update(int newHomeTeamScore, int newAwayTeamScore, boolean newIsFinished) {
-        validationNotInProgress();
+        validationIsInProgress();
         this.awayTeamScore = newAwayTeamScore;
         this.homeTeamScore = newHomeTeamScore;
         this.isFinished = newIsFinished;
     }
 
-    public void finish(){
-        validationNotInProgress();
+    public void createGameResult() {
+        validationGameResult();
+        this.gameResult =
+                homeTeam.name + " " + homeTeamScore +
+                        " - " +
+                        awayTeam.name + " " + awayTeamScore;
+    }
+
+    private void validationGameResult() {
+        if (!isFinished) {
+            throw new GameInvalidStateException("Game Result can't be created -  game is not finished.");
+        }
+    }
+
+    public void finish() {
+        validationIsInProgress();
         this.isFinished = true;
     }
 
-    private void validationNotInProgress() {
-        if(isFinished){
-            throw new GameInvalidStateException("Game can't be updated because it is already finished.");
+    private void validationIsInProgress() {
+        if (isFinished) {
+            throw new GameInvalidStateException("Game can't be updated - game is already finished.");
         }
     }
 
