@@ -55,6 +55,30 @@ class GameSpec extends Specification {
         ex.message == "Game can't be updated because it is already finished."
     }
 
+    def "should not finish game - game is already finished"() {
+        given:
+        Game game = createFinishedGame()
+
+        when:
+        game.finish()
+
+        then:
+        GameInvalidStateException ex = thrown(GameInvalidStateException)
+        ex.message == "Game can't be updated because it is already finished."
+    }
+
+    def "should finish game"() {
+        given:
+        Game game = createNewGame()
+
+        when:
+        game.finish()
+
+        then:
+        noExceptionThrown()
+        game.isFinished
+    }
+
     private Game createNewGame() {
         Team homeTeam = Team.of("France")
         Team awayTeam = Team.of("Poland")

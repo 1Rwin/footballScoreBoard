@@ -25,6 +25,11 @@ public class Game {
         this.isFinished = newIsFinished;
     }
 
+    public void finish(){
+        validationNotInProgress();
+        this.isFinished = true;
+    }
+
     private void validationNotInProgress() {
         if(isFinished){
             throw new GameInvalidStateException("Game can't be updated because it is already finished.");
