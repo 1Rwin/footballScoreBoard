@@ -2,6 +2,7 @@ package org.example.repository;
 
 import org.example.domain.game.Game;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,7 +12,9 @@ public interface GameRepository {
 
     Game getById(UUID gameId);
 
-    Game save(Game game);
+    void save(Game game);
 
     void removeAll();
+
+    void saveAll(Collection<Game> games);
 }

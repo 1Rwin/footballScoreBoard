@@ -3,10 +3,7 @@ package org.example.infrastructure;
 import org.example.domain.game.Game;
 import org.example.repository.GameRepository;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -27,14 +24,18 @@ public class InMemoryGameRepository implements GameRepository {
     }
 
     @Override
-    public Game save(Game game) {
+    public void save(Game game) {
         Objects.requireNonNull(game, "Saved game cannot be null");
         GAMES.put(game.id, game);
-        return game;
     }
 
     @Override
     public void removeAll() {
         GAMES.clear();
+    }
+
+    @Override
+    public void saveAll(Collection<Game> games) {
+        games.forEach(this::save);
     }
 }

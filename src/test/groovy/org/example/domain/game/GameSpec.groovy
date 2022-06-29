@@ -8,8 +8,8 @@ class GameSpec extends Specification {
 
     def "should create new game"() {
         given:
-        Team homeTeam = Team.of("France")
-        Team awayTeam = Team.of("Poland")
+        Team homeTeam = Team.newTeam("France")
+        Team awayTeam = Team.newTeam("Poland")
 
         when:
         Game newGame = Game.startNew(homeTeam, awayTeam)
@@ -80,14 +80,14 @@ class GameSpec extends Specification {
     }
 
     private Game createNewGame() {
-        Team homeTeam = Team.of("France")
-        Team awayTeam = Team.of("Poland")
+        Team homeTeam = Team.newTeam("France")
+        Team awayTeam = Team.newTeam("Poland")
         Game.startNew(homeTeam, awayTeam)
     }
 
     private Game createFinishedGame() {
-        Team homeTeam = Team.of("France")
-        Team awayTeam = Team.of("Poland")
+        Team homeTeam = Team.newTeam("France")
+        Team awayTeam = Team.newTeam("Poland")
         Game newGame = Game.startNew(homeTeam, awayTeam)
         newGame.update(0, 0, true)
         newGame

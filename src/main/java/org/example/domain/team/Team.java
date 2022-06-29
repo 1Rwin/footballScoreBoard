@@ -7,7 +7,7 @@ public class Team {
     UUID id;
     public String name;
 
-    public static Team of(String name) {
+    public static Team newTeam(String name) {
         return new Team(name);
     }
 
