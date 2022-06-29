@@ -1,4 +1,6 @@
-package org.example;
+package org.example.game;
+
+import org.example.team.Team;
 
 import java.util.Objects;
 import java.util.UUID;

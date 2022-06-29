@@ -1,5 +1,6 @@
-package org.example
+package org.example.team
 
+import org.example.team.Team
 import spock.lang.Specification
 
 class TeamSpec extends Specification {

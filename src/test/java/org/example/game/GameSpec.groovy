@@ -1,5 +1,7 @@
-package org.example
+package org.example.game
 
+import org.example.game.Game
+import org.example.team.Team
 import spock.lang.Specification
 
 class GameSpec extends Specification {
