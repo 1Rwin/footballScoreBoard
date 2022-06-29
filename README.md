@@ -12,6 +12,6 @@ Unfortunately, due to a rather large simplification, there was no room to show o
 
 Application tests cover all its functionality described in the task.
 
-The JAR file has been generated and is located in the out / artifacts folder.
+The JAR file has been generated and is located in the main project folder - file name: footballScoreBoard.main.jar.
 
 I am open to meet and discuss the task.
