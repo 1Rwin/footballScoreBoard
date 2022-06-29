@@ -1,11 +1,11 @@
-package org.example.team;
+package org.example.domain.team;
 
 import java.util.Objects;
 import java.util.UUID;
 
 public class Team {
     UUID id;
-    String name;
+    public String name;
 
     public static Team of(String name) {
         return new Team(name);

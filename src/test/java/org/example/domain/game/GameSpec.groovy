@@ -1,18 +1,18 @@
-package org.example.game
+package org.example.domain.game
 
-import org.example.game.Game
-import org.example.team.Team
+import org.example.domain.game.Game
+import org.example.domain.team.Team
 import spock.lang.Specification
 
 class GameSpec extends Specification {
 
-    def"should create new game"(){
+    def "should create new game"() {
         given:
         Team homeTeam = Team.of("France")
         Team awayTeam = Team.of("Poland")
 
         when:
-        Game newGame = Game.startNew(homeTeam,awayTeam)
+        Game newGame = Game.startNew(homeTeam, awayTeam)
 
         then:
         newGame.awayTeam.name == "Poland"
